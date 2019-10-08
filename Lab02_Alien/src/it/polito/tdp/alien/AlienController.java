@@ -6,6 +6,7 @@ package it.polito.tdp.alien;
 
 
 import java.io.*;
+import java.util.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -46,38 +47,33 @@ public class AlienController {
     @FXML
     void doTranslate(ActionEvent event) {
     	txtResult.clear();
-    	String stringa = txtWord.getText();
-    	stringa.trim();
-    	
-    	String aw= "";
-    	String tr="";
-    	Word alienW = new Word (aw);
-    	/*try {
-    		int indirizzo = stringa.indexOf(" ");
-    		tr = stringa.substring(indirizzo+2, stringa.length()-1).toLowerCase();
-    		aw = stringa.substring(1, stringa.indexOf(">")).toLowerCase();
-    	} catch (Exception e) {
-    		txtResult.appendText("inserire un formato corretto <> <>");
-    	}*/
-    	if (stringa.contains(" "))
-    	
-    	{
-    		int indirizzo = stringa.indexOf(" ");
-    		tr = stringa.substring(indirizzo+2, stringa.length()-1).toLowerCase();
-    		aw = stringa.substring(1, stringa.indexOf(">")).toLowerCase();	
-    	    alienW.setTraduzione(tr);
-    	}
-    	else {
-    		aw = stringa.substring(1,stringa.length()-1).toLowerCase();
-    		txtResult.appendText(alienW.getTraduzione());
-    	
-    	
-    	}/*Object w1 = "";
-		Object w2 = "";
-		stringa.format("<%d> <&d>", w1 ,  w2);
-		dizionario.put(w1, w2);
-		
-		txtResult.appendText(w1.toString()+"trad in "+ w2.toString());*/
+        String stringa = txtWord.getText();
+        StringTokenizer st = new StringTokenizer(stringa," ");
+        if (stringa == null || stringa.length()==0) {
+            txtResult.appendText("inserire una o due parole");
+        	return;
+        }
+        
+        if (!st.hasMoreElements()) {
+        	txtResult.appendText("inserire una o due parole");
+        	return;
+        }
+        String alienW = st.nextToken();
+        if (st.hasMoreTokens()) {
+        	String traduzione = st.nextToken();
+        	if ( !alienW.matches("[a-zA-Z]*")|| !traduzione.matches("[a-zA-Z]*")){
+        		
+        		txtResult.appendText("inserire un formato corretto");
+        		return;
+        		
+        	}
+        	 
+        	dizionario.put(alienW, traduzione);
+        	txtResult.appendText("la parola : " + alienW+ " è stata inserita nel dizionario con la traduzione : " + traduzione);
+         }else {
+        	 txtResult.appendText(dizionario.get(alienW).toString());
+         }
+        
        
     	    	
     }
