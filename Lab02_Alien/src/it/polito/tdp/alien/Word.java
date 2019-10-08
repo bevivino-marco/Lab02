@@ -11,16 +11,13 @@ public class Word {
 	private AlienDictionary dizionario = new AlienDictionary ();
 
     //private List <String> listaW = new LinkedList <String>();
-    public Word(String alienW) {
+    public Word(String alienW , String traduzione) {
     	this.alienW= alienW;
+    	this.traduzione = traduzione;
 		
 	}
-	public boolean equals (Object w) {
-    	if (w.equals(alienW))
-		return true;
-    	else return false;
     	
-    }
+    
 	public String getAlienW() {
 		return alienW;
 	}
@@ -31,6 +28,32 @@ public class Word {
 		this.traduzione = traduzione;
 		dizionario.put(alienW, traduzione);
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((alienW == null) ? 0 : alienW.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Word other = (Word) obj;
+		if (alienW == null) {
+			if (other.alienW != null)
+				return false;
+		} else if (!alienW.equals(other.alienW))
+			return false;
+		return true;
+	}
+	
+	
+	
 	
 	
 
