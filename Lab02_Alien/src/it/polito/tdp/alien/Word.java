@@ -8,7 +8,7 @@ import java.util.Map;
 public class Word {
 	private String alienW;
 	private String traduzione;
-	private AlienDictionary dizionario = new AlienDictionary ();
+	//private AlienDictionary dizionario = new AlienDictionary ();
 
     //private List <String> listaW = new LinkedList <String>();
     public Word(String alienW , String traduzione) {
@@ -26,7 +26,7 @@ public class Word {
 	}
 	public void setTraduzione(String traduzione) {
 		this.traduzione = traduzione;
-		dizionario.put(alienW, traduzione);
+		//dizionario.put(alienW, traduzione);
 	}
 	@Override
 	public int hashCode() {
