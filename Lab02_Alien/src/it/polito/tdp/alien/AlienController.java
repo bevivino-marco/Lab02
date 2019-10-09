@@ -59,6 +59,7 @@ public class AlienController {
         	return;
         }
         String alienW = st.nextToken();
+        
         if (st.hasMoreTokens()) {
         	String traduzione = st.nextToken();
         	if ( !alienW.matches("[a-zA-Z]*")|| !traduzione.matches("[a-zA-Z]*")){
@@ -67,11 +68,14 @@ public class AlienController {
         		return;
         		
         	}
-        	 
+        	
+        	
         	dizionario.put(alienW, traduzione);
         	txtResult.appendText("la parola : " + alienW+ " è stata inserita nel dizionario con la traduzione : " + traduzione);
          }else {
-        	 txtResult.appendText(dizionario.get(alienW).toString());
+        	
+        	 txtResult.appendText(((Word) dizionario.get(alienW)).getTraduzioni().toString());
+        	 
          }
         
        

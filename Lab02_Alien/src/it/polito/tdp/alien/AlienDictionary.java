@@ -1,12 +1,15 @@
 package it.polito.tdp.alien;
 
 import java.util.Dictionary;
+import java.util.*;
 import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AlienDictionary extends Dictionary{
-	private Map <Object, Object> mappaW = new HashMap <Object, Object>();
+	//private Map <Object, Object> mappaW = new HashMap <Object, Object>();
+	private List <Word> dizionario = new LinkedList<Word>();
 
 	@Override
 	public Enumeration elements() {
@@ -17,7 +20,14 @@ public class AlienDictionary extends Dictionary{
 	@Override
 	public Object get(Object arg0) {
 		// TODO Auto-generated method stub
-		return mappaW.get(arg0);
+		
+		for ( Word w : dizionario) {
+			if (w.getAlienW().equals(arg0)) {
+				return w;
+			}
+			
+		}
+		return null;
 	}
 
 	@Override
@@ -34,9 +44,23 @@ public class AlienDictionary extends Dictionary{
 
 	@Override
 	public Object put(Object arg0, Object arg1) {
-		// TODO Auto-generated method stub
-		mappaW.put(arg0, arg1);
-		return mappaW.get(arg0);
+         boolean trovato = false;
+        	 for (Word w : dizionario) {
+                 if (w.getAlienW().equals(arg0)) {
+                	 w.setTraduzioni((String)arg1);
+                	 trovato = true;
+                 }
+
+        	 }
+        	 if (trovato ==false) {
+        		 
+        	 
+        		 Word w = new Word ((String)arg0);
+        		 dizionario.add(w);
+        		 w.setTraduzioni((String)arg1);
+        	 }
+        	 return arg1;
+		
 	}
 
 	@Override

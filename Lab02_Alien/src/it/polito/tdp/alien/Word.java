@@ -7,13 +7,13 @@ import java.util.Map;
 
 public class Word {
 	private String alienW;
-	private String traduzione;
+	private List<String> traduzioni= new LinkedList<String>();
 	//private AlienDictionary dizionario = new AlienDictionary ();
 
     //private List <String> listaW = new LinkedList <String>();
-    public Word(String alienW , String traduzione) {
+    public Word(String alienW ) {
     	this.alienW= alienW;
-    	this.traduzione = traduzione;
+    	
 		
 	}
     	
@@ -21,13 +21,14 @@ public class Word {
 	public String getAlienW() {
 		return alienW;
 	}
-	public String getTraduzione() {
-		return traduzione;
+	public List<String >getTraduzioni() {
+		return traduzioni;
 	}
-	public void setTraduzione(String traduzione) {
-		this.traduzione = traduzione;
+	public void setTraduzioni(String traduzione) {
+		traduzioni.add(traduzione);
 		//dizionario.put(alienW, traduzione);
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
