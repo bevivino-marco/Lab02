@@ -72,8 +72,12 @@ public class AlienController {
         	
         	dizionario.put(alienW, traduzione);
         	txtResult.appendText("la parola : " + alienW+ " è stata inserita nel dizionario con la traduzione : " + traduzione);
+        	
+        	
          }else {
         	
+        	 
+        	 
         	 txtResult.appendText(((Word) dizionario.get(alienW)).getTraduzioni().toString());
         	 
          }
