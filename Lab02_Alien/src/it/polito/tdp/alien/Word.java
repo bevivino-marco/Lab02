@@ -7,6 +7,7 @@ import java.util.Map;
 
 public class Word {
 	private String alienW;
+	private int c = 0;
 	private List<String> traduzioni= new LinkedList<String>();
 	//private AlienDictionary dizionario = new AlienDictionary ();
 
@@ -26,8 +27,17 @@ public class Word {
 	}
 	public void setTraduzioni(String traduzione) {
 		traduzioni.add(traduzione);
+		c++;
 		//dizionario.put(alienW, traduzione);
 	}
+	
+
+
+
+	public int getC() {
+		return c;
+	}
+
 
 	@Override
 	public int hashCode() {

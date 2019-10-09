@@ -66,7 +66,11 @@ public class AlienDictionary extends Dictionary{
 	@Override
 	public Object remove(Object arg0) {
 		// TODO Auto-generated method stub
-		return null;
+		dizionario.remove(arg0);
+		return arg0;
+	}
+	public void clear () {
+		dizionario.clear();
 	}
 
 	@Override

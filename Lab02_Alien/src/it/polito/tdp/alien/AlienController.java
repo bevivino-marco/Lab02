@@ -75,22 +75,20 @@ public class AlienController {
         	
         	
          }else {
-        	
-        	 
-        	 
-        	 txtResult.appendText(((Word) dizionario.get(alienW)).getTraduzioni().toString());
-        	 
+           txtResult.appendText(((Word) dizionario.get(alienW)).getTraduzioni().toString().trim());
          }
         
        
-    	    	
-    }
+    }    	
+    
     
     
     @FXML
     void doReset(ActionEvent event) {
     	txtResult.clear();
-
+        dizionario.clear();
+        txtWord.clear();
+        
     }
     
 }
