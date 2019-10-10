@@ -8,6 +8,7 @@ package it.polito.tdp.alien;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.StringTokenizer;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -43,6 +44,28 @@ public class AlienController {
     
     @FXML
     void doTranslate(ActionEvent event) {
+    	txtResult.clear();
+    	if (txtWord != null) {
+    		StringTokenizer st = new StringTokenizer (" ");
+    	    if (!st.hasMoreElements()) {
+    	    	txtResult.appendText(" inserire una o due parole");
+    	    	return;
+    	    }
+    	    	String alienW = st.nextToken().toString().toLowerCase();
+    	    	if(st.hasMoreTokens()) {
+    	    		String traduzione = st.nextToken().toString().toLowerCase();
+    	    		if (!alienW.matches("[]a-zA-Z?]*")|| traduzione.matches("[]a-zA-Z?]*") ) {
+    	    			txtResult.appendText(" inserire un formato corretto");
+    	    	    	return;
+    	    		}else {
+    	    			
+    	    		}
+    	    	}
+    	    	
+    	    	
+    	    	
+    	    
+    	}
     	    	
     }
     
