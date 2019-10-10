@@ -25,16 +25,12 @@
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
    </padding>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="237.0" prefWidth="493.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" prefHeight="99.0" prefWidth="493.0">
+            <HBox alignment="CENTER" prefHeight="64.0" prefWidth="493.0">
                <children>
                   <Label prefHeight="28.0" prefWidth="77.0" text="Alien Text" />
-                  <TextArea fx:id="txtWord" prefHeight="13.0" prefWidth="200.0">
-                     <HBox.margin>
-                        <Insets left="50.0" right="50.0" />
-                     </HBox.margin>
-                  </TextArea>
+                  <TextField fx:id="txtWord" />
                   <Button fx:id="btnTranslate" mnemonicParsing="false" onAction="#doTranslate" text="Translate" />
                </children>
                <opaqueInsets>
@@ -44,7 +40,11 @@
                   <Insets bottom="50.0" />
                </VBox.margin>
             </HBox>
-            <TextField fx:id="txtResult" alignment="TOP_LEFT" prefHeight="313.0" prefWidth="493.0" text="Welcome to alien dictionary v2019" />
+            <HBox prefHeight="276.0" prefWidth="493.0">
+               <children>
+                  <TextArea fx:id="txtResult" prefHeight="113.0" prefWidth="493.0" text="Welcome to alien dictionary v2019" />
+               </children>
+            </HBox>
          </children>
       </VBox>
    </center>

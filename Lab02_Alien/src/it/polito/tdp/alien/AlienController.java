@@ -7,6 +7,7 @@ package it.polito.tdp.alien;
 
 
 import java.net.URL;
+import java.util.*;
 import java.util.ResourceBundle;
 import java.util.StringTokenizer;
 
@@ -30,6 +31,8 @@ public class AlienController {
     private Button btnTranslate;
     @FXML
     private Button btnReset;
+    private AlienDictionary aD = new AlienDictionary ();
+    private List <String> lW = new ArrayList<String>();
         
     
     @FXML // This method is called by the FXMLLoader when initialization is complete
@@ -45,29 +48,65 @@ public class AlienController {
     @FXML
     void doTranslate(ActionEvent event) {
     	txtResult.clear();
+    	String riga = txtWord.getText().toLowerCase();
     	if (txtWord != null) {
-    		StringTokenizer st = new StringTokenizer (" ");
+    		StringTokenizer st = new StringTokenizer (riga," ");
     	    if (!st.hasMoreElements()) {
     	    	txtResult.appendText(" inserire una o due parole");
     	    	return;
     	    }
     	    	String alienW = st.nextToken().toString().toLowerCase();
+    	    	// se inserisco parola e traduzione
     	    	if(st.hasMoreTokens()) {
     	    		String traduzione = st.nextToken().toString().toLowerCase();
-    	    		if (!alienW.matches("[]a-zA-Z?]*")|| traduzione.matches("[]a-zA-Z?]*") ) {
+    	    		if (!alienW.matches("[a-zA-Z?]*")|| !traduzione.matches("[a-zA-Z?]*") ) {
     	    			txtResult.appendText(" inserire un formato corretto");
     	    	    	return;
     	    		}else {
+    	    			if ( !lW.contains(alienW)) {
+    	    			WordEnhanced aW = new WordEnhanced (alienW, traduzione);
+    	    			aW.setListaT(traduzione);
+    	    			aD.setListaW(aW);
+    	    			txtResult.appendText("la parola : "+ aW.getaW() + "è stata inserita correttamente nel dizionario con traduzione :" + traduzione + aW.getListaT() );
+    	    			// controllo se si creano le parole
+    	    			/*for (WordEnhanced w : aD.getListaW()) {
+    	    				txtResult.appendText(w.getaW());
+    	    			}*/
     	    			
-    	    			
-    	    			
+    	    		}else {
+    	    		         for (WordEnhanced w : aD.getListaW()) {
+    	    		        	 if (w.getaW()== alienW)
+    	    		        	 {
+    	    		        		 w.setListaT(traduzione);
+    	    		        		 
+    	    		        	 }
+    	    		         }
     	    		}
     	    	}
     	    	
     	    	
     	    	
     	    
-    	}
+    	    	}// se inserisco solo parola
+    	    	else {
+    	    		if (!alienW.matches("[a-zA-Z?]*") ) {
+    	    	
+	    			txtResult.appendText(" inserire un formato corretto");
+	    	    	return;
+    	    		}    	    		   
+    	    		for (WordEnhanced w : aD.getListaW()) {
+   		        	 if (w.getaW()== alienW)
+   		        	 {
+   		        		txtResult.appendText(w.getListaT().toString()); 
+   		        		 
+   		        	 }
+    	    		
+    	    		
+    	    	}
+    	    	
+    	    	
+    	    	}
+    	    	}
     	    	
     }
     
