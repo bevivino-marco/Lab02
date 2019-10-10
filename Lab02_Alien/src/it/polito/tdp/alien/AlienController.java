@@ -75,6 +75,7 @@ public class AlienController {
     	    			
     	    		}else {
     	    		         for (WordEnhanced w : aD.getListaW()) {
+    	    		        	 
     	    		        	 if (w.getaW()== alienW)
     	    		        	 {
     	    		        		 w.setListaT(traduzione);
