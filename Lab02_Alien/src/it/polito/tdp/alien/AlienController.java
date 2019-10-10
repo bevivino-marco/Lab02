@@ -62,7 +62,7 @@ public class AlienController {
     	    		if (!alienW.matches("[a-zA-Z?]*")|| !traduzione.matches("[a-zA-Z?]*") ) {
     	    			txtResult.appendText(" inserire un formato corretto");
     	    	    	return;
-    	    		}else {
+    	    		}else { // ciclare questo if per trovare nel dizionario la parola esatta e vedere se è uguale ad alien W
     	    			if ( !lW.contains(alienW)) {
     	    			WordEnhanced aW = new WordEnhanced (alienW, traduzione);
     	    			aW.setListaT(traduzione);
@@ -80,6 +80,7 @@ public class AlienController {
     	    		        		 w.setListaT(traduzione);
     	    		        		 
     	    		        	 }
+    	    		        	 
     	    		         }
     	    		}
     	    	}
