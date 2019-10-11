@@ -21,18 +21,30 @@ public class AlienDictionary {
 		}
 		
 	}
-	public List<WordEnhanced> getListaW() {
-		return listaW;
-	}
-	public String cercaTraduzioniWild (String aW) {
+	public String getListaW() {
+		String s = "";
 		for (WordEnhanced w : listaW) {
+			s+= "\n"+w.getaW()+w.getTraduzioni().toString()+"\n";
+		}
+		//return listaW;
+		return s;
+	}
+	public String cercaTraduzioni (String aW) {
+		for (WordEnhanced w : listaW) {
+		 
+		 
 			if (w.getaW().equals(aW)) {
 				w.getTraduzioni();
 			}
 		}
-		return "";
+		return null;
+		/*WordEnhanced w = new WordEnhanced (aW);
+		if (listaW.contains(w))
+			return listaW.get(listaW.indexOf(w)).getTraduzioni();
+		return null;
+		*/
 	}
-	public String cercaParolaConWildCard (String wild) {
+	public String cercaTraduzioniConWildCard (String wild) {
 		wild = wild.replace("\\?", ".");
 		boolean trovati =false;
 		StringBuilder sb = new StringBuilder();

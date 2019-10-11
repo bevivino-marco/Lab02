@@ -59,18 +59,44 @@ public class AlienController {
     	    	// se inserisco parola e traduzione
     	    	if(st.hasMoreTokens()) {
     	    		String traduzione = st.nextToken().toString().toLowerCase();
-    	    		if (!alienW.matches("[a-zA-Z?]*")|| !traduzione.matches("[a-zA-Z?]*") ) {
+    	    		if (!alienW.matches("[a-zA-Z]*")|| !traduzione.matches("[a-zA-Z]*") ) {
     	    			txtResult.appendText(" inserire un formato corretto");
     	    	    	return;
     	    	    	}
+    	    		else {
+    	    			aD.aggiungiTraduzione(alienW, traduzione);
+    	    			txtResult.appendText("la parola " +alienW+ "è stata aggiunta con la traduzione : "+traduzione);
+    	    			
     	    		}
-    	    	}
+    	    		
+    	    		}else { // se contiene solo alienW
+    	    		
+    	    		      if (!alienW.matches("[a-zA-Z?]*")) {
+    	    			txtResult.appendText("inserire solo caratteri alfabetici");
+    	    		     }
+    	    		      if (alienW.matches("[a-zA-Z?]*") && !alienW.matches("[a-zA-Z]*")) {
+    	    		    	 //System.out.println(aD.getListaW().toString());
+    	    		    	 txtResult.appendText( aD.cercaTraduzioniConWildCard(alienW));
+    	    		      }
+    	    		      if (!alienW.matches("[a-zA-Z?]*") && alienW.matches("[a-zA-Z]*")) {
+    	    		    	  //System.out.println(aD.getListaW().toString());
+    	    		    	  txtResult.appendText(aD.cercaTraduzioni(alienW));
+    	    		      }
+    	    		
+    	    			
+    	    		}
+    	    		
+    	    	txtResult.appendText(aD.getListaW().toString());
+      		}
+    
+    }
+    	    	
 
     	    	
     	    	
     	    	
     	    	
-    	    	}
+    	    	
     	    	
     
     

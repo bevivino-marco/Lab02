@@ -5,7 +5,7 @@ import java.util.*;
 public class WordEnhanced {
 	private String aW;
 	
-	private List <String> listaT= new LinkedList <String >();
+	private List <String> listaT;
 	
 	
 	/*public WordEnhanced(String aW, String tr) {
@@ -15,7 +15,7 @@ public class WordEnhanced {
 		//this.tr= tr;
 	}*/
 	public WordEnhanced(String aW) {
-		
+		this.listaT = new ArrayList <String >();
 		this.aW= aW;
 			
 		
