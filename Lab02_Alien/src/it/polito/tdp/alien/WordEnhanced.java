@@ -4,24 +4,47 @@ import java.util.*;
 
 public class WordEnhanced {
 	private String aW;
-	//private String tr;
+	
 	private List <String> listaT= new LinkedList <String >();
 	
-	public WordEnhanced(String aW, String tr) {
-		//super();
+	
+	/*public WordEnhanced(String aW, String tr) {
+
 		this.aW = aW;
+		this.listaT.add(tr);
 		//this.tr= tr;
+	}*/
+	public WordEnhanced(String aW) {
+		
+		this.aW= aW;
+			
+		
+		
 	}
 	public String getaW() {
 		return aW;
 	}
 	
-	public String getListaT() {
-		return listaT.toString();
+	public void setTraduzioni(String trad) {
+
+	 if (!listaT.contains(trad))
+		 listaT.add(trad);
 	}
-	public void setListaT(String traduzione) {
-		this.listaT.add(traduzione);
+	public boolean compareWild(String wild) {
+		if (aW.matches(wild))
+			return true;
+		return false;
 	}
+	
+	public String getTraduzioni() {
+		String tr = "";
+		for (String a : listaT) {
+			
+			tr = a+"\n";
+		}
+		return tr;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

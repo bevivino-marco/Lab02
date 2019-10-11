@@ -62,55 +62,17 @@ public class AlienController {
     	    		if (!alienW.matches("[a-zA-Z?]*")|| !traduzione.matches("[a-zA-Z?]*") ) {
     	    			txtResult.appendText(" inserire un formato corretto");
     	    	    	return;
-    	    		}else { // ciclare questo if per trovare nel dizionario la parola esatta e vedere se è uguale ad alien W
-    	    			if ( !lW.contains(alienW)) {
-    	    			WordEnhanced aW = new WordEnhanced (alienW, traduzione);
-    	    			aW.setListaT(traduzione);
-    	    			aD.setListaW(aW);
-    	    			txtResult.appendText("la parola : "+ aW.getaW() + "è stata inserita correttamente nel dizionario con traduzione :" + traduzione + aW.getListaT() );
-    	    			// controllo se si creano le parole
-    	    			/*for (WordEnhanced w : aD.getListaW()) {
-    	    				txtResult.appendText(w.getaW());
-    	    			}*/
-    	    			
-    	    		}else {
-    	    		         for (WordEnhanced w : aD.getListaW()) {
-    	    		        	 
-    	    		        	 if (w.getaW()== alienW)
-    	    		        	 {
-    	    		        		 w.setListaT(traduzione);
-    	    		        		 
-    	    		        	 }
-    	    		        	 
-    	    		         }
+    	    	    	}
     	    		}
     	    	}
+
     	    	
     	    	
-    	    	
-    	    
-    	    	}// se inserisco solo parola
-    	    	else {
-    	    		if (!alienW.matches("[a-zA-Z?]*") ) {
-    	    	
-	    			txtResult.appendText(" inserire un formato corretto");
-	    	    	return;
-    	    		}    	    		   
-    	    		for (WordEnhanced w : aD.getListaW()) {
-   		        	 if (w.getaW()== alienW)
-   		        	 {
-   		        		txtResult.appendText(w.getListaT().toString()); 
-   		        		 
-   		        	 }
-    	    		
-    	    		
-    	    	}
     	    	
     	    	
     	    	}
-    	    	}
     	    	
-    }
+    
     
     
     @FXML
