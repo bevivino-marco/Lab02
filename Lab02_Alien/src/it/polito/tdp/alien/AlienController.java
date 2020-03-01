@@ -7,6 +7,7 @@ package it.polito.tdp.alien;
 
 
 import java.net.URL;
+import java.security.InvalidParameterException;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -29,6 +30,8 @@ public class AlienController {
     private Button btnTranslate;
     @FXML
     private Button btnReset;
+    
+    private AlienDictionary dizionario = new AlienDictionary();
         
     
     @FXML // This method is called by the FXMLLoader when initialization is complete
@@ -43,6 +46,26 @@ public class AlienController {
     
     @FXML
     void doTranslate(ActionEvent event) {
+    	String [] s;
+    	String testo = txtWord.getText().toLowerCase().trim();
+    	if (testo.matches("[^a-z]"))
+    		throw new InvalidParameterException ("inserire una parola corretta");
+
+    	s= txtWord.getText().split(" ");
+    	if (s.length==2) {
+    		String aW = s[0].trim();
+    		String t = s[1].trim();
+    		txtResult.clear();
+    		dizionario.addWord(aW, t);
+    	//	txtResult.appendText("----"+s[0]+"........"+s[1]+"\n");
+    	}
+    	if (s.length==1) {
+    		String a = s[0].trim();
+    		txtResult.clear();
+    		txtResult.appendText(dizionario.translateWord(a));
+    //		txtResult.appendText("----"+s[0]+"........");
+
+    	}
     	    	
     }
     
