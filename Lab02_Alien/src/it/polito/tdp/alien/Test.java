@@ -3,8 +3,8 @@ package it.polito.tdp.alien;
 public class Test {
 	public static void main (String[] args) {
 	AlienDictionary al = new AlienDictionary();
-	Word w1 = new Word ("w1", "t1");
-	Word w2 = new Word ("w1", "t2");
+	//WordEnhanced w1 = new WordEnhanced ("w1");
+	//WordEnhanced w2 = new WordEnhanced ("w1");
 
 	al.addWord("w1", "t1");
 	al.addWord("w1", "t2");

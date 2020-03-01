@@ -1,12 +1,16 @@
 package it.polito.tdp.alien;
 
-public class Word {
+import java.util.*;
+
+public class WordEnhanced {
 private String alienWord;
-private String traduzione;
-public Word(String alienWord, String traduzione) {
+//private String traduzione;
+private List <String>traduzioni;
+public WordEnhanced(String alienWord) {
 	
 	this.alienWord = alienWord;
-	this.traduzione = traduzione;
+//	this.traduzione = traduzione;
+	traduzioni = new LinkedList <String>();
 }
 
 @Override
@@ -17,7 +21,7 @@ public boolean equals(Object obj) {
 		return false;
 	if (getClass() != obj.getClass())
 		return false;
-	Word other = (Word) obj;
+	WordEnhanced other = (WordEnhanced) obj;
 	if (alienWord == null) {
 		if (other.alienWord != null)
 			return false;
@@ -32,11 +36,16 @@ public String getAlienWord() {
 public void setAlienWord(String alienWord) {
 	this.alienWord = alienWord;
 }
-public String getTraduzione() {
-	return traduzione;
+public void addTraduzione(String t) {
+	if (!traduzioni.contains(t))
+	traduzioni.add(t);
 }
-public void setTraduzione(String traduzione) {
-	this.traduzione = traduzione;
+public String getTraduzioni() {
+	String s ="";
+	for (String t :traduzioni) {
+		s+= t+"\n";
+	}
+	return s;
 }
 
 }

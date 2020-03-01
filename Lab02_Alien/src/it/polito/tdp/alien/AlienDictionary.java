@@ -4,30 +4,31 @@ import java.security.InvalidParameterException;
 import java.util.*;
 
 public class AlienDictionary {
-	List <Word> listaW ;
+	List <WordEnhanced> listaW ;
 
 	public AlienDictionary() {
-		this.listaW = new LinkedList <Word>();
+		this.listaW = new LinkedList <WordEnhanced>();
 	}
 	public void addWord (String aW, String t) {
 		boolean trovato = false;
-		for (Word w : listaW) {
+		for (WordEnhanced w : listaW) {
 			if(w.getAlienWord().equals(aW)) {
-				listaW.remove(listaW.indexOf(w));
-				listaW.add(new Word (aW,t));
+				w.addTraduzione(t);
 				trovato =true;
 			}
 		}if (trovato == false) {
-			listaW.add(new Word (aW,t));
+			WordEnhanced w = new WordEnhanced (aW);
+			listaW.add(w);
+			w.addTraduzione(t);
 		}
 	}
 	
 	
 	public String translateWord (String AlienWord) {
 		boolean trovato = false;
-		for (Word w : listaW) {
+		for (WordEnhanced w : listaW) {
 			if (w.getAlienWord().equals(AlienWord)) {
-				return w.getTraduzione();
+				return w.getTraduzioni();
 				
 			}
 		}
@@ -41,8 +42,8 @@ public class AlienDictionary {
 	}
 	public String getLista() {
 		String s="";
-	 for (Word w :listaW) {
-		 s += w.getAlienWord()+" "+w.getTraduzione()+"\n";
+	 for (WordEnhanced w :listaW) {
+		 s += w.getAlienWord()+" "+w.getTraduzioni()+"\n";
 	 }
 	 return s+" , "+listaW.size();
 	}
