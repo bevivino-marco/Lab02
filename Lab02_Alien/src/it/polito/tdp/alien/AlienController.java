@@ -46,10 +46,11 @@ public class AlienController {
     
     @FXML
     void doTranslate(ActionEvent event) {
+    	
     	String [] s;
     	String testo = txtWord.getText().toLowerCase().trim();
-    	if (testo.matches("[^a-z]"))
-    		throw new InvalidParameterException ("inserire una parola corretta");
+    	if (!testo.matches("[^a-z]"))
+    		throw new NumberFormatException ("inserire una parola corretta con solo lettere");
 
     	s= txtWord.getText().split(" ");
     	if (s.length==2) {
@@ -66,7 +67,7 @@ public class AlienController {
     //		txtResult.appendText("----"+s[0]+"........");
 
     	}
-    	    	
+    	 	
     }
     
     

@@ -10,24 +10,18 @@ public class AlienDictionary {
 		this.listaW = new LinkedList <Word>();
 	}
 	public void addWord (String aW, String t) {
-		Word w = new Word (aW, t);
 		boolean trovato = false;
-		if (!listaW.contains(w)) {
-			for ( Word w1 : listaW) {
-				if(w1.getAlienWord()==aW) {
-					listaW.remove(w1);
-					listaW.add(w);
-					trovato = true;
-				}
-					
+		for (Word w : listaW) {
+			if(w.getAlienWord().equals(aW)) {
+				listaW.remove(listaW.indexOf(w));
+				listaW.add(new Word (aW,t));
+				trovato =true;
 			}
-			if ( trovato ==false) {
-			listaW.add(w);
+		}if (trovato == false) {
+			listaW.add(new Word (aW,t));
 		}
-		}
-		
-		
 	}
+	
 	
 	public String translateWord (String AlienWord) {
 		boolean trovato = false;

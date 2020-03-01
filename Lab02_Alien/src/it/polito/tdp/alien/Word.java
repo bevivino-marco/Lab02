@@ -8,12 +8,24 @@ public Word(String alienWord, String traduzione) {
 	this.alienWord = alienWord;
 	this.traduzione = traduzione;
 }
-public boolean equals (Word w) {
-	if (this.alienWord.trim()==w.alienWord)
+
+@Override
+public boolean equals(Object obj) {
+	if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (getClass() != obj.getClass())
+		return false;
+	Word other = (Word) obj;
+	if (alienWord == null) {
+		if (other.alienWord != null)
+			return false;
+	} else if (!alienWord.equals(other.alienWord))
+		return false;
 	return true;
-	return false;
-	
 }
+
 public String getAlienWord() {
 	return alienWord;
 }
